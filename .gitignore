@@ -44,6 +44,7 @@ typings/
 
 # Optional eslint cache
 .eslintcache
+.eslintrc
 
 # Optional REPL history
 .node_repl_history
@@ -57,3 +58,6 @@ typings/
 # dotenv environment variables file
 .env
 
+# stuff
+stuff/
+launch.sh
