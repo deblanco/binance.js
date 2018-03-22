@@ -1,0 +1,32 @@
+{
+  "name": "binance.js",
+  "version": "1.0.0",
+  "description": "A Binance API class built under KISS principle.",
+  "main": "binance.js",
+  "dependencies": {
+    "node-fetch": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deblanco/binance.js.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "trading",
+    "bitcoin",
+    "binance",
+    "api",
+    "rest"
+  ],
+  "author": "Daniel Blanco Parla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deblanco/binance.js/issues"
+  },
+  "homepage": "https://github.com/deblanco/binance.js#readme"
+}
