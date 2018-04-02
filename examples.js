@@ -29,14 +29,17 @@ const quadraticTrend = async (symbol) => {
 
 const run = async () => {
     try {
-    // Connectivity test
-    console.log('Connectivity test: ' + JSON.stringify(await binance.customRequest('v1/ping', {})));
+        // Connectivity test
+        console.log('Connectivity test: ' + JSON.stringify(await binance.customRequest('v1/ping', {})));
 
-    // Makes a lineal regression of last 500 trades and returns the trend for the next 500,
-    // this kind of formula suggest us how will change the bid price to forecast an order or place one
-    console.log('Current trend: ' + await quadraticTrend('BTCUSDT'));
+        // Makes a lineal regression of last 500 trades and returns the trend for the next 500,
+        // this kind of formula suggest us how will change the bid price to forecast an order or place one
+        console.log('Current trend: ' + await quadraticTrend('BTCUSDT'));
 
-    } catch(e) {
+        // aggStreamWs BTCUSDT symbol
+        binance.aggTradeWs('BTCUSDT', function (event) { console.log(event.data) } );
+
+    } catch (e) {
         throw e;
     }
 };

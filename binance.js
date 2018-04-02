@@ -1,7 +1,9 @@
 const fetch = require('node-fetch');
+const WebSocket = require('ws');
 const crypto = require('crypto');
 
 const baseEndpoint = 'https://api.binance.com/api/';
+const wsEndpoint = 'wss://stream.binance.com:9443/ws/';
 
 class Binance {
   constructor(APIKEY, APISECRET) {
@@ -85,6 +87,18 @@ class Binance {
     return crypto.createHmac('sha256', this.APISECRET).update(urlParams).digest('hex');
   }
 
+  aggTradeWs(symbol, incomingFn) {
+    if (!incomingFn || !(incomingFn instanceof Function))
+      throw 'A second parameter with a function is mandatory.';
+    // symbol should be in lower-case
+    const endpoint = `${symbol.toLowerCase()}@aggTrade`;
+    const ws = new WebSocket(wsEndpoint + endpoint);
+    ws.onmessage = incomingFn;
+    ws.onerror = (error) => console.log('WebSocket closed: ', error);
+    ws.onclose = () => console.log('WebSocket closed');
+  }
+
+  // fetch wrapper to add APIKEY by default and custom method
   async fetch(url, method = 'GET') {
     const init = {
       method,

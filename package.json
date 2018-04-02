@@ -4,7 +4,8 @@
   "description": "A Binance API class built under KISS principle.",
   "main": "binance.js",
   "dependencies": {
-    "node-fetch": "^2.1.1"
+    "node-fetch": "^2.1.1",
+    "ws": "^5.1.1"
   },
   "devDependencies": {},
   "scripts": {
